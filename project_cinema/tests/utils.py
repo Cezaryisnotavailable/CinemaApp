@@ -39,9 +39,7 @@ def find_person_by_name(name):
 def create_fake_movie():
     """Generate new fake movie and save to databases"""
     movie_data = fake_movie_data()
-    print("tutaj   ", movie_data["director"])
     movie_data["director"] = find_person_by_name(movie_data["director"])
-    print("tutaj   ", movie_data["director"])
     actors = movie_data["actors"]
     del movie_data["actors"]
     new_movie = Movie.objects.create(**movie_data)
