@@ -31,6 +31,7 @@ def fake_cinema_data():
         "city": faker.city(),
     }
 
+
 def create_fake_cinema():
     """Create fake cinema with some screenings"""
     cinema = Cinema.objects.create(**fake_cinema_data())
