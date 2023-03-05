@@ -1,6 +1,10 @@
 import os
 import sys
 
+# from django.conf import settings
+# import django
+# django.setup()
+
 import pytest
 from rest_framework.test import APIClient
 

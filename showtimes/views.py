@@ -5,6 +5,7 @@ from showtimes.serializers import CinemaSerializer
 
 # Create your views here.
 
+
 class CinemaListView(generics.ListCreateAPIView):
     queryset = Cinema.objects.all()
     serializer_class = CinemaSerializer
