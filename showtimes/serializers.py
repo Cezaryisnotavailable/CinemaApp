@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from showtimes.models import Cinema
+from showtimes.models import Cinema, Screening
+from project_cinema.models import Movie
 
 
 class CinemaSerializer(serializers.ModelSerializer):
@@ -12,3 +13,18 @@ class CinemaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cinema
         fields = ["name", "city", "movies"]
+
+
+class ScreeningSerializer(serializers.ModelSerializer):
+    cinema = serializers.SlugRelatedField(
+        slug_field="name",
+        queryset=Cinema.objects.all()
+    )
+    movie = serializers.SlugRelatedField(
+        slug_field="title",
+        queryset=Movie.objects.all()
+    )
+
+    class Meta:
+        model = Screening
+        field = ['movie', 'cinema', 'date']

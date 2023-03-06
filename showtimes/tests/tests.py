@@ -12,6 +12,13 @@ from showtimes.models import Cinema
 faker = Faker("pl_PL")
 TZ = pytz.timezone(TIME_ZONE)
 
+# from django.conf import settings
+#
+# if settings.DEBUG:
+#     print("Running in debug mode.")
+#     cinema = Cinema.objects.first()
+#     print("Cinema name:", cinema.name)
+
 
 @pytest.mark.django_db
 def test_add_cinema(client, set_up):
