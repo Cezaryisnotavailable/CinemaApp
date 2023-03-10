@@ -66,7 +66,8 @@ def test_update_cinema(client, set_up):
 def test_update_cinema_with_put(client, set_up):
     cinema = Cinema.objects.first()
     new_name = "DCF"
-    response = client.put(f"/cinemas/{cinema.id}", {"name": new_name}, format="json")
+    response = client.put(f"/cinemas/{cinema.id}/", {"name": new_name}, format="json")
+
     assert response.status_code == 200
     cinema_obj = Cinema.objects.get(id=cinema.id)
     assert cinema_obj.name == new_name
@@ -101,7 +102,7 @@ def test_get_screening_list(client, set_up):
 @pytest.mark.django_db
 def test_get_screening_detail(client, set_up):
     screening = Screening.objects.first()
-    response = client.get(f"/screenings/{screening.id}", {}, format="json")
+    response = client.get(f"/screenings/{screening.id}/", {}, format="json")
 
     assert response.status_code == 200
     for field in ("movie", "cinema", "date"):
@@ -111,7 +112,7 @@ def test_get_screening_detail(client, set_up):
 @pytest.mark.django_db
 def test_delete_screening(client, set_up):
     screening = Screening.objects.first()
-    response = client.delete(f"/screenings/{screening.id}", {}, format="json")
+    response = client.delete(f"/screenings/{screening.id}/", {}, format="json")
     assert response.status_code == 204
     screening_ids = [screening.id for screening in Screening.objects.all()]
     assert screening.id not in screening_ids

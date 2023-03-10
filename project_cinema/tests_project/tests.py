@@ -2,7 +2,7 @@ import sys
 
 import pytest
 
-from project_cinema.models import Movie, Person
+from project_cinema.models import Movie
 from project_cinema.tests_project.utils import fake_movie_data, random_person
 
 from pathlib import Path
@@ -38,6 +38,7 @@ def test_get_movie_list(client, set_up):
 def test_get_movie_detail(client, set_up):
     movie = Movie.objects.first()
     response = client.get(f"/movies/{movie.id}/", {}, format="json")
+
     assert response.status_code == 200
     for field in ("title", "year", "description", "director", "actors"):
         assert field in response.data

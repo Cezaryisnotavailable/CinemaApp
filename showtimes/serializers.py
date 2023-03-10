@@ -27,4 +27,4 @@ class ScreeningSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Screening
-        field = ['movie', 'cinema', 'date']
+        fields = ['movie', 'cinema', 'date']
