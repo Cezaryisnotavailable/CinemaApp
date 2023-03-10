@@ -6,10 +6,10 @@ from faker import Faker
 from rest_framework.test import APIClient
 
 from project_cinema.models import Person
-from project_cinema.tests.utils import create_fake_movie
-from .utils import create_fake_cinema
+from project_cinema.tests_project.utils import create_fake_movie
+from showtimes.tests_showtimes.utils import create_fake_cinema
 
-sys.path.append(os.path.dirname(__file__))
+# sys.path.append(os.path.dirname(__file__))
 faker = Faker("pl_PL")
 
 

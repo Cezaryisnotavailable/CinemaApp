@@ -20,7 +20,7 @@ def fake_movie_data():
     """
     movie_data = {
         "title": f"{faker.job()} {faker.first_name()}",
-        "description": faker.sentense(),
+        "description": faker.sentence(),
         "year": int(faker.year()),
         "director": random_person().name,
     }

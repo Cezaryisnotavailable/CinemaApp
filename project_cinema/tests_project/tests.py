@@ -3,12 +3,12 @@ import sys
 import pytest
 
 from project_cinema.models import Movie, Person
-from .utils import fake_movie_data, random_person
+from project_cinema.tests_project.utils import fake_movie_data, random_person
 
 from pathlib import Path
 
 # add the directory of the current script file to the Python module search path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+# sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 
 @pytest.mark.django_db
