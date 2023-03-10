@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path
 
 from project_cinema.views import MovieListView, MovieView
-from showtimes.views import CinemaListView, CinemaView
+from showtimes.views import CinemaListView, CinemaView, ScreeningView, ScreeningListView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("movies/", MovieListView.as_view()),
-    path("movies/<int:pk>", MovieView.as_view(), name="movies-detail"),
+    path("movies/<int:pk>/", MovieView.as_view(), name="movies-detail"),
     path("cinemas/", CinemaListView.as_view()),
-    path("cinemas/<int:pk>", CinemaView.as_view()),
+    path("cinemas/<int:pk>/", CinemaView.as_view()),
+    path("screenings/", ScreeningListView.as_view()),
+    path("screenings/<int:pk>/", ScreeningView.as_view()),
 
 ]
