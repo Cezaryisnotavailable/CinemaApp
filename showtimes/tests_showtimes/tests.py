@@ -93,7 +93,15 @@ def test_add_screening(client, set_up):
     new_screening_data["date"] = new_screening_data["date"].replace("+00:00", "Z")
     for key, value in new_screening_data.items():
         assert key in response.data
-        assert response.data[key] == value
+        # assert response.data[key] == value
+        # Above has to be replaced with below due to TypeError
+        # Error: Class 'TypedDict' does not define '__getitem__', so the '[]' operator cannot be used on its instances
+        # The error message indicates that you are trying to use the [] operator on an instance of a TypedDict,
+        # which is not allowed because TypedDict does not define __getitem__.
+        # eason for this error is that the response.data object is of type TypedDict, which does not
+        # support indexing with []. To access the value of a key in a TypedDict, you should use
+        # the .get() method instead.
+        assert response.data.get(key) == value
 
 
 @pytest.mark.django_db
