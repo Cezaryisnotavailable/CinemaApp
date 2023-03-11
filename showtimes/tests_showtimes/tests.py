@@ -57,6 +57,7 @@ def test_update_cinema(client, set_up):
     new_name = "DCF"
     cinema_data["name"] = new_name
     response = client.patch(f"/cinemas/{cinema.id}/", cinema_data, format="json")
+
     assert response.status_code == 200
     cinema_obj = Cinema.objects.get(id=cinema.id)
     assert cinema_obj.name == new_name
@@ -65,6 +66,8 @@ def test_update_cinema(client, set_up):
 @pytest.mark.django_db
 def test_update_cinema_with_put(client, set_up):
     cinema = Cinema.objects.first()
+    print(f"tutaj: {cinema.name}")
+    print(f"tutaj: {cinema.city}")
     # It turned out that all fields of the model need to be passed.
     new_data = {"name": "New Name", "city": "New City"}
     response = client.put(f"/cinemas/{cinema.id}/", new_data, format="json")
